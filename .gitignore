@@ -1,0 +1,20 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+# Other Eclipse IDE files
+.project
+.pydev*
+
+# Ignore compiled python
+*.pyc
+.pip
+
+# Don't checking Android Studio IDE files
+*.idea
+*.iml
+
