@@ -51,11 +51,7 @@ public class ThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TY
         if (null == listener) {
             throw new IllegalArgumentException("listener cannot be null.");
         }
-        synchronized(mRegistrar) {
-            if (!mRegistrar.contains(listener)) {
-                mRegistrar.add(listener);
-            }
-        }
+        mRegistrar.addIfAbsent(listener);
     }
 
     @Override

@@ -184,6 +184,28 @@ public abstract class RegistrarTest extends TestCase {
         assertEquals(1, iterations);
     }
 
+    @Test
+    public void testAddOneRemoveTwice() {
+        final Registrar<Object> testSubject = onCreateTestSubject();
+        final Object testObserver = new Object();
+
+        testSubject.addListener(testObserver);
+        testSubject.removeListener(testObserver);
+        testSubject.removeListener(testObserver);
+        boolean foundSubject = false;
+
+        int iterations = 0;
+        for (Object listener : testSubject) {
+            if (listener == testObserver) {
+                foundSubject = true;
+                testSubject.removeListener(testSubject);
+            }
+            ++iterations;
+        }
+        assertFalse(foundSubject);
+        assertEquals(0, iterations);
+    }
+
     // +----------------------------------------------------------------------+
     // | ADD TWO TESTS
     // +----------------------------------------------------------------------+
