@@ -3,8 +3,7 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
-/captures
+**/build
 
 # Other Eclipse IDE files
 .project

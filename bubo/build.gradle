@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
