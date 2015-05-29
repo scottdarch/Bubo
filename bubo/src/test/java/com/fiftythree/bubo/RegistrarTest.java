@@ -258,7 +258,7 @@ public abstract class RegistrarTest extends TestCase {
             ++iterations;
             if (listener == testObserver0) {
                 foundSubject0 = true;
-                testSubject.removeListener(testObserver0);
+                testSubject.removeListener(listener);
             } else if (listener == testObserver1) {
                 foundSubject1 = true;
             }
@@ -277,7 +277,6 @@ public abstract class RegistrarTest extends TestCase {
             ++iterations;
             if (listener == testObserver0) {
                 foundSubject0 = true;
-                testSubject.removeListener(testSubject);
             } else if (listener == testObserver1) {
                 foundSubject1 = true;
             }
@@ -304,10 +303,13 @@ public abstract class RegistrarTest extends TestCase {
         for (Object listener : testSubject) {
             ++iterations;
             if (listener == testObserver0) {
+                assertFalse(foundSubject0);
                 foundSubject0 = true;
                 testSubject.removeListener(testObserver1);
             } else if (listener == testObserver1) {
+                assertFalse(foundSubject1);
                 foundSubject1 = true;
+                testSubject.removeListener(testObserver0);
             }
         }
 

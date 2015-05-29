@@ -23,6 +23,7 @@
 package com.fiftythree.bubo;
 
 import com.fiftythree.bubo.annotations.CopyOnWrite;
+import com.fiftythree.bubo.annotations.WeakRegistrar;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
@@ -36,6 +37,7 @@ import java.util.NoSuchElementException;
  * Registrar that holds only weak references to observers.
  */
 @CopyOnWrite
+@WeakRegistrar
 public class WeakSingleThreadedRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TYPE> {
 
     private ArrayList<WeakReference<LISTENER_TYPE>> mRegistrar;

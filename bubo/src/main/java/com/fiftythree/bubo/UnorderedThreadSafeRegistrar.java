@@ -25,8 +25,9 @@ package com.fiftythree.bubo;
 import com.fiftythree.bubo.annotations.ThreadSafe;
 import com.fiftythree.bubo.annotations.Unordered;
 
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * A registrar that is safe to use across threads both for (de)registration and observer iteration. This
@@ -39,10 +40,24 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Unordered
 public class UnorderedThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TYPE> {
 
-    private final ConcurrentLinkedQueue<LISTENER_TYPE> mRegistrar;
+    private final ConcurrentSkipListSet<LISTENER_TYPE> mRegistrar;
 
     public UnorderedThreadSafeRegistrar() {
-        mRegistrar = new ConcurrentLinkedQueue<LISTENER_TYPE>();
+        mRegistrar = new ConcurrentSkipListSet<LISTENER_TYPE>(new Comparator<LISTENER_TYPE>() {
+            @Override
+            public int compare(LISTENER_TYPE o1, LISTENER_TYPE o2) {
+                // We don't actually care about the order. To obey the Observer Registration Key Rule
+                // we must use object identity for equity. For ordering between instances we can use the
+                // hashcode to obtain a stable if arbitrary ordering.
+                if (o1 == o2) {
+                    return 0;
+                } else if (o1.hashCode() > o2.hashCode()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
     }
 
     // +----------------------------------------------------------------------+
@@ -53,9 +68,7 @@ public class UnorderedThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LI
         if (null == listener) {
             throw new IllegalArgumentException("listener cannot be null.");
         }
-        if (!mRegistrar.contains(listener)) {
-            mRegistrar.add(listener);
-        }
+        mRegistrar.add(listener);
     }
 
     @Override
