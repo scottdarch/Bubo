@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,18 +23,14 @@
 package com.fiftythree.bubo;
 
 import com.fiftythree.bubo.annotations.CopyOnWrite;
-import com.fiftythree.bubo.annotations.Unordered;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.WeakHashMap;
 
 /**
  * Registrar that holds only weak references to observers. This implementation is useful when registering {@link android.app.Activity}
@@ -58,6 +53,9 @@ public class WeakSingleThreadedRegistrar<LISTENER_TYPE> implements Registrar<LIS
     // +----------------------------------------------------------------------+
     @Override
     public void addListener(LISTENER_TYPE listener) {
+        if (null == listener) {
+            throw new IllegalArgumentException("listener cannot be null.");
+        }
         for (WeakReference<LISTENER_TYPE> reference : mRegistrar) {
             LISTENER_TYPE strongRef = reference.get();
             if (listener == strongRef) {
@@ -73,6 +71,9 @@ public class WeakSingleThreadedRegistrar<LISTENER_TYPE> implements Registrar<LIS
 
     @Override
     public void removeListener(LISTENER_TYPE listener) {
+        if (null == listener) {
+            throw new IllegalArgumentException("listener cannot be null.");
+        }
         LISTENER_TYPE theStrongRef = null;
         WeakReference<LISTENER_TYPE> theWeakRef = null;
         for (WeakReference<LISTENER_TYPE> reference : mRegistrar) {

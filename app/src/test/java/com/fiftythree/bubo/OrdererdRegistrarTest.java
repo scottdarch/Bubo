@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@
  */
 package com.fiftythree.bubo;
 
-import junit.framework.TestCase;
+import com.fiftythree.bubo.annotations.Unordered;
 
 import org.junit.Test;
 
@@ -36,6 +35,13 @@ public abstract class OrdererdRegistrarTest extends RegistrarTest {
     // +----------------------------------------------------------------------+
     // | ORDERING TESTS
     // +----------------------------------------------------------------------+
+    @Test
+    public void testIsNotUnorderedAnnotated() {
+        final Registrar<Object> testSubject = onCreateTestSubject();
+        final Class<? extends Registrar> testSubjectClass = testSubject.getClass();
+        assertNull(testSubjectClass.getAnnotation(Unordered.class));
+    }
+
     @Test
     public void testAddThreeDispatchOrder() {
         final Registrar<Object> testSubject = onCreateTestSubject();

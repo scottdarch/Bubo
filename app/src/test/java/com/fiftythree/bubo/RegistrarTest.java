@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,6 +35,31 @@ public abstract class RegistrarTest extends TestCase {
     // | TEST TEMPLATE METHODS
     // +----------------------------------------------------------------------+
     protected abstract Registrar<Object> onCreateTestSubject();
+
+    // +----------------------------------------------------------------------+
+    // | NULL ARGUMENT TESTS
+    // +----------------------------------------------------------------------+
+    @Test
+    public void testIAEForAddListener() {
+        try {
+            final Registrar<Object> testSubject = onCreateTestSubject();
+            testSubject.addListener(null);
+            fail("IAE was not thrown");
+        } catch (IllegalArgumentException e) {
+            // okay
+        }
+    }
+
+    @Test
+    public void testIAEForRemoveListener() {
+        try {
+            final Registrar<Object> testSubject = onCreateTestSubject();
+            testSubject.removeListener(null);
+            fail("IAE was not thrown");
+        } catch (IllegalArgumentException e) {
+            // okay
+        }
+    }
 
     // +----------------------------------------------------------------------+
     // | ADD ONE TESTS

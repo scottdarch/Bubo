@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,14 +23,18 @@
 package com.fiftythree.bubo.annotations;
 
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marks a Registrar implementation that discards observer registration ordering to gain other advantages. This
- * means that the registrar's iterator may return each observer using an arbitrary or even unstable (i.e. between
- * iterations) ordering. It does <em>not</em> allow the registrar's iterator to skip observers or return the
- * same observer twice.
+ * Marks a Registrar implementation that may violate observer registration ordering to gain other advantages.
+ * This means that the registrar's iterator may return each observer using an arbitrary or even unstable
+ * (i.e. different order between iterations even without changes to the registered observer list) ordering.
+ * It does <em>not</em> allow the registrar's iterator to skip observers or return the same observer more
+ * than once for a single iteration.
  */
+@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface Unordered {
 }

@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +23,15 @@
 package com.fiftythree.bubo.annotations;
 
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Declares that a Registrar can be used by multiple threads for any an all registrar operations.
+ * Declares that a Registrar can be used by multiple threads for any and all
+ * registrar operations.
  */
+@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface ThreadSafe {
 }

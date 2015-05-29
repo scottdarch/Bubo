@@ -1,12 +1,11 @@
 /*
- *                                                           ^ ^
- *                                                           O O
- *                                                         /    )
- *                                                        /  ,,
- *                                                       /
  *
- * Bubo Observer Library for Android
- *
+ *                                ^ ^
+ *                                O O
+ *                              /    )
+ *                             /  ,,
+ * Bubo – Observable Contracts and Specialized Implementations.
+ *                              |/
  * Copyright 2015 FiftyThree
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,6 +48,9 @@ public class ThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TY
     // +----------------------------------------------------------------------+
     @Override
     public void addListener(LISTENER_TYPE listener) {
+        if (null == listener) {
+            throw new IllegalArgumentException("listener cannot be null.");
+        }
         synchronized(mRegistrar) {
             if (!mRegistrar.contains(listener)) {
                 mRegistrar.add(listener);
@@ -58,6 +60,9 @@ public class ThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TY
 
     @Override
     public void removeListener(LISTENER_TYPE listener) {
+        if (null == listener) {
+            throw new IllegalArgumentException("listener cannot be null.");
+        }
         mRegistrar.remove(listener);
     }
 
