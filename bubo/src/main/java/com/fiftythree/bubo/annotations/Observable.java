@@ -103,4 +103,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface Observable {
+    /**
+     * A type of observer interface supported by this observable object.
+     * @return The observer type or Object.class if unspecified.
+     */
+    Class<?> value() default Object.class;
 }

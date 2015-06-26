@@ -22,15 +22,12 @@
  */
 package com.fiftythree.bubo;
 
-import com.fiftythree.bubo.annotations.Observable;
-
 /**
  * Common contract for all Bubo observable implementations.
  *
  * <p>See {@link com.fiftythree.bubo.annotations.Observable} for extensive details on how
  * Bubo Observables should behave. Registrar objects must also adhere to this contract.</p>
  */
-@Observable
 public interface Registrar<LISTENER_TYPE> extends Iterable<LISTENER_TYPE> {
 
     /**
