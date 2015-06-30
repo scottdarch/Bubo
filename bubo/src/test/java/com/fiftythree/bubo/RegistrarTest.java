@@ -206,6 +206,18 @@ public abstract class RegistrarTest extends TestCase {
         assertEquals(0, iterations);
     }
 
+    @Test
+    public void testSize() {
+        final Registrar<Object> testSubject = onCreateTestSubject();
+        final Object testObserver = new Object();
+
+        assertEquals(0, testSubject.size());
+
+        testSubject.addListener(testObserver);
+
+        assertEquals(1, testSubject.size());
+    }
+
     // +----------------------------------------------------------------------+
     // | ADD TWO TESTS
     // +----------------------------------------------------------------------+

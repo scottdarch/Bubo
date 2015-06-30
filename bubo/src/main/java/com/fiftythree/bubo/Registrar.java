@@ -56,4 +56,10 @@ public interface Registrar<LISTENER_TYPE> extends Iterable<LISTENER_TYPE> {
      */
     void clear();
 
+    /**
+     * Get the number of listeners in the registrar. The complexity of this call will vary between Registrar
+     * implementations.
+     * @return The number of listeners in the registrar.
+     */
+    int size();
 }

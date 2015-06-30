@@ -84,6 +84,11 @@ public class UnorderedThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LI
         mRegistrar.clear();
     }
 
+    @Override
+    public int size() {
+        return mRegistrar.size();
+    }
+
     // +----------------------------------------------------------------------+
     // | Iterable
     // +----------------------------------------------------------------------+

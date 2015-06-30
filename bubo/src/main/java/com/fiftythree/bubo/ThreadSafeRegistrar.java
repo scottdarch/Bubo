@@ -67,6 +67,11 @@ public class ThreadSafeRegistrar<LISTENER_TYPE> implements Registrar<LISTENER_TY
         mRegistrar.clear();
     }
 
+    @Override
+    public int size() {
+        return mRegistrar.size();
+    }
+
     // +----------------------------------------------------------------------+
     // | Iterable
     // +----------------------------------------------------------------------+

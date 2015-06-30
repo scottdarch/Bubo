@@ -99,6 +99,11 @@ public class WeakSingleThreadedRegistrar<LISTENER_TYPE> implements Registrar<LIS
         mListenerReferenceQueue = new ReferenceQueue<LISTENER_TYPE>();
     }
 
+    @Override
+    public int size() {
+        return mRegistrar.size();
+    }
+
     // +----------------------------------------------------------------------+
     // | Iterable
     // +----------------------------------------------------------------------+

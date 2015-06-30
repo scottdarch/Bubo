@@ -70,6 +70,11 @@ public class SingleThreadedRegistrar<LISTENER_TYPE> implements Registrar<LISTENE
         mRegistrar = new ArrayList<LISTENER_TYPE>();
     }
 
+    @Override
+    public int size() {
+        return mRegistrar.size();
+    }
+
     // +----------------------------------------------------------------------+
     // | Iterable
     // +----------------------------------------------------------------------+
