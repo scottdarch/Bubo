@@ -35,6 +35,11 @@ import java.lang.annotation.Target;
  * than once for a single iteration.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface Unordered {
+    /**
+     * The observer interface(s) which use an unordered registrar.
+     * @return Observer interface types.
+     */
+    Class<?>[] value() default {};
 }

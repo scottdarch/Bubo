@@ -29,6 +29,11 @@ import java.lang.annotation.Target;
  * Declares that a Registrar type uses Java synchronization or some other memory locking scheme which may
  * be disadvantageous on multi-core machines.
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface Locking {
+    /**
+     * The observer interface(s) which use locks/synchronization.
+     * @return Observer interface types.
+     */
+    Class<?>[] value() default {};
 }

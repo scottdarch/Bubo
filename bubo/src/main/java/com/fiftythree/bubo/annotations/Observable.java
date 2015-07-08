@@ -104,8 +104,8 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 public @interface Observable {
     /**
-     * A type of observer interface supported by this observable object.
-     * @return The observer type or Object.class if unspecified.
+     * A type(s) of observer interface(s) supported by this observable object.
+     * @return The observer types or an empty array if unspecified.
      */
-    Class<?> value() default Object.class;
+    Class<?>[] value() default {};
 }

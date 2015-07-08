@@ -32,6 +32,11 @@ import java.lang.annotation.Target;
  * registrar operations.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface ThreadSafe {
+    /**
+     * The observer interface(s) which use a thread-safe registrar.
+     * @return Observer interface types.
+     */
+    Class<?>[] value() default {};
 }

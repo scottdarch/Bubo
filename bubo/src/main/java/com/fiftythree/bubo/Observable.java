@@ -24,10 +24,9 @@ package com.fiftythree.bubo;
 
 /**
  * Helper interface for Observable objects. Use this interface when defining observable interfaces or abstract
- * types that support only 1 observer type. For more complex objects use Bubo annotations directly.
+ * types that support only 1 observer type.
  * @param <T>   The listener type supported by this object.
  */
-@com.fiftythree.bubo.annotations.Observable
 public interface Observable<T> {
 
     /**

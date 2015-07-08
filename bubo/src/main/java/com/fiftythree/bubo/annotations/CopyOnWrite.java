@@ -30,6 +30,11 @@ import java.lang.annotation.Target;
  * internally. Implementations that use COW provide fast, stable iteration over the registrar's elements but
  * may cause memory heap fragmentation if the add, remove, or clear methods are used too frequently.
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface CopyOnWrite {
+    /**
+     * The observer interface(s) which use copy-on-write semantics.
+     * @return Observer interface types.
+     */
+    Class<?>[] value() default {};
 }

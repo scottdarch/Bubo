@@ -33,6 +33,11 @@ import java.lang.annotation.Target;
  * strong reference to the Observable this reference management is naturally correct.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface WeakRegistrar {
+    /**
+     * The observer interface(s) which use a weak registrar.
+     * @return Observer interface types.
+     */
+    Class<?>[] value() default {};
 }
