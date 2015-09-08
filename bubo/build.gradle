@@ -1,4 +1,7 @@
 apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.github.FiftyThree'
 
 sourceCompatibility = 1.6
 version = '1.0'
