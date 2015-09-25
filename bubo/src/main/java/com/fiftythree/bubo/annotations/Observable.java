@@ -43,7 +43,7 @@ import java.lang.annotation.Target;
  * </ol>
  * <blockquote>Note that within Bubo the terms Listener and Observer are synonymous. In practice the former
  * is a more specialized version of the latter but since Bubo only deals with the Observable's notification
- * dispatch behaviour it has no need to distinguish two concepts.</blockquote>
+ * dispatch behaviour it has no need to distinguish the two concepts.</blockquote>
  *
  * <h3>Observer/Listener Registration</h3>
  * <p>The following registration behaviours must be observed by Bubo compliant Observables:</p>
@@ -93,7 +93,7 @@ import java.lang.annotation.Target;
  *     <li><strong>Default Thread Safety Rule – </strong> Unless annotated with {@link ThreadSafe} an
  *     Observable should not be considered thread-safe.</li>
  *     <li><strong>Apartment Threaded Dispatch Rule – </strong> Observables will only dispatch a notification
- *     on one thread at a time. There is not guarantee for observers that the thread stack will be retained
+ *     on one thread at a time. There is no guarantee for observers that the thread stack will be retained
  *     between notifications.</li>
  *     <li><strong>Concurrent Notification Rule – </strong> At this time Bubo does not guarantee any ordering,
  *     parallelism, or serialization between notifications from an observer. Future revisions may add
