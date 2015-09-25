@@ -14,6 +14,6 @@ To get started developing for Bubo you should follow these steps:
 
  ## Submitting Changes
 
- If you have a change you want to submit you first need to sign our [Contributor Licence Agreement](https://docs.google.com/a/fiftythree.com/forms/d/1E3JSNh8mtjdkldqbt0uzjIW18VNVgCp9qgg8MsYwWzQ).
+ If you have a change you want to submit you first need to sign our [Contributor Licence Agreement](http://goo.gl/forms/FXNfVHUzyN).
 
  If you are considering a change that isn't trivial and would like to get pre-approval for your idea just open a [GitHub issue](https://github.com/FiftyThree/Bubo/issues) and we'll respond with comments as we have time.
