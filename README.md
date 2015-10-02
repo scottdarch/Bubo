@@ -1,6 +1,8 @@
 # Bubo ![Bubo Scandiacus (Snowy Owl: Photo, Attribution CC 2.0, http://en.wikipedia.org/wiki/Snowy_owl)](Bubo-eyes.png)
 A small library implementing best practices when using the Observer Pattern with plain ol' Java objects (POJOs).
 
+[ ![Download](https://api.bintray.com/packages/fiftythree/FiftyThreeCenter/bubo/images/download.svg) ](https://bintray.com/fiftythree/FiftyThreeCenter/bubo/_latestVersion)
+
 ## Background
 
 [The Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) is ubiquitous in Java (e.g. [ActionListener](http://docs.oracle.com/javase/7/docs/api/java/awt/event/ActionListener.html) in AWT or Android's [View.OnClickListener](http://developer.android.com/reference/android/view/View.OnClickListener.html)) and is often implemented by Java developers in their own classes without much thought. Typically a listener pattern is established using just a simple ArrayList.
